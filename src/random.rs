@@ -51,7 +51,7 @@ mod tests {
 
     use crate::N_UUID_BYTES;
 
-use super::*;
+    use super::*;
 
     #[test]
     fn random_bytes_has_no_duplicates_in_many_samples() {
