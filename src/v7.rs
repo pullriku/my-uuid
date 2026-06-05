@@ -1,7 +1,4 @@
-use std::{
-    mem::MaybeUninit,
-    time::{SystemTime, UNIX_EPOCH},
-};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 use crate::{N_UUID_BYTES, Result, bytes_to_uuid_string, random::random_bytes};
 
