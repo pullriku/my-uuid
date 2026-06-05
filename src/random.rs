@@ -34,7 +34,7 @@ pub fn random_bytes() -> io::Result<[u8; BUFLEN]> {
         )
     };
 
-    if ret >= 0 {
+    if ret == BUFLEN as isize {
         unsafe {
             Ok(buf.assume_init())
         }
