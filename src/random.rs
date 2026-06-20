@@ -1,3 +1,6 @@
+#[cfg(not(any(target_os = "linux", target_os = "macos")))]
+compile_error!("rikuuid currently supports only Linux and macOS.");
+
 #[cfg(target_os = "macos")]
 use std::{
     ffi::{c_int, c_void},
