@@ -29,10 +29,10 @@ pub(crate) fn random_bytes_16() -> io::Result<[u8; 16]> {
     let mut buf: MaybeUninit<[u8; 16]> = MaybeUninit::uninit();
     let ret = unsafe { getrandom(buf.as_mut_ptr().cast(), 16, 0) };
 
-    if ret == 16 as isize {
-        unsafe { Ok(buf.assume_init()) }
-    } else {
-        Err(std::io::Error::last_os_error())
+    match ret {
+        16 => unsafe { Ok(buf.assume_init()) },
+        -1 => Err(std::io::Error::last_os_error()),
+        _ => unreachable!(),
     }
 }
 
